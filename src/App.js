@@ -6,23 +6,42 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import Dashboard from './Components/Patient/Dashboard/Dashboard';
+import Dashboard from './Components/Dashboard/Dashboard';
+
+import Auth, { AuthContextProvider } from './Components/useAuth';
+import { useState } from 'react';
+import Appoinments from './Components/Appoinments/Appoinments';
+import Summary from './Components/Summary/Summary';
+
+
 
 function App() {
+
+
+  
+
+  const handler=()=>{
+    console.log()
+  }
+
   return (
     <div className="App">
+
+<AuthContextProvider>
+
+
       <Router>
       <div>
         <nav>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/summary">Summary</Link>
             </li>
             <li>
-              <Link to="/patient/dashboard">Patient's dashboard</Link>
+              <Link to="/dashboard">Patient's dashboard</Link>
             </li>
             <li>
-              <Link to="/users">Users</Link>
+              <Link to="/appointments">Appointments</Link>
             </li>
           </ul>
         </nav>
@@ -30,19 +49,19 @@ function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/patient/dashboard">
-            <h1> Patient's dashboard</h1>
-            <Dashboard></Dashboard>
+          <Route exact path="/dashboard">
+              <Dashboard handler={handler}></Dashboard>
           </Route>
-          <Route path="/users">
-          
+          <Route path="/appointments">
+              <Appoinments></Appoinments>
           </Route>
-          <Route path="/">
-            
+          <Route path="/summary">
+           <Summary> </Summary>
           </Route>
         </Switch>
       </div>
     </Router>
+  </AuthContextProvider>
       
     </div>
   );
