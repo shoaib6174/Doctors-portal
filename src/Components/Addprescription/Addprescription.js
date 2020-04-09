@@ -56,7 +56,7 @@ const Addprescription = () => {
                 <input type="text" name='symptoms' placeholder='symptoms' onChange={handleChange}/><br/>
                 <input type="text" name='diagnosis' placeholder='diagnosis' onChange={handleChange}/><br/>
                 <input type="text" name='prescription' placeholder='prescription' onChange={handleChange}/><br/>
-                <input type="submit" value='save'/>
+                
                 <button onClick={handleSubmit}>add</button>
             </form>
         </div>
