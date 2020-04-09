@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import './Appointments.css'
 
 const Appoinments = () => {
     const dateWriter = date =>{
@@ -30,61 +31,54 @@ const Appoinments = () => {
     const onDateApp=[]
 
     return (
-        <div>
-            <div className="calender">
+        <div className='appoinments-list'>
+            <div className="appointments-calender">
                 <Calendar onChange={onDateChange}  onSelect={(e)=>{
                         
                 }} ></Calendar>
-                {String(newDate)}
+                
             </div>
             <div className='appoinments'>
                 {
-            
-            
                   appointments &&  appointments.map(a=>{
-                     
-                   
                         if(a.date===String(newDate)){
-                            
                             onDateApp.push(a)
-                            
-                            
-                        }
-                        
+                        }  
                     })
                 }
-            </div>
-            <div>
-            <table>
-                <ol>
-                    <tr>
-                        <th>1</th>
-                        <th>2</th>
-                        <th>3</th>
-                        <th>4</th>
-                        <th>5</th>
-                        <th>6</th>
-                        
-                    </tr>
-                   
-                {
-                  appointments &&  onDateApp.map(app=>(
-                       <tr>
-                            <td><li></li></td>
-                            <td>{app.date}</td>
-                            <td>{app.time}</td>
-                            <td>{app.name}</td>
-                            <td>{app.type}</td>
-                            <td>{app.phone}</td>
+            
+                <body>
+                <table className='css-serial'>
+                    <tbody>
+                        <tr>
+                            <th>Serial No</th>
                             
-
+                            <th>Time</th>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Phone No</th>
                             
                         </tr>
-                       
-                    ))
-                }
-                </ol>
-            </table>
+                    
+                    {
+                    appointments &&  onDateApp.map(app=>(
+                        <tr>
+                                <td></td>
+                                
+                                <td>{app.time}</td>
+                                <td>{app.name}</td>
+                                <td>{app.type}</td>
+                                <td>{app.phone}</td>
+                                
+
+                                
+                            </tr>
+                        
+                        ))
+                    }
+                    </tbody>
+                </table>
+                </body>
             </div>
             
         

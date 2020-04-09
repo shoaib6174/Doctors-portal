@@ -1,15 +1,29 @@
-.appoinments{
-    
+.appoinment-booking{
+   
 }
 .patientDashboard{
     
 }
+.calender{
+    margin-left: 37%;
+}
 
 
 .card{
-    
-    
+    width: 300px;
+    height: 120px;
+    line-height: 15px;
+    padding: none;
+    margin: none;
 }
 .card-body{
-    color: red;
+    padding: none;
+    margin-top: -20px;
+}
+.card__body{
+    padding: 0px;
+}
+.appoinments{
+    display: flex;
+    width: 100%;
 }

@@ -4,7 +4,7 @@ import 'react-calendar/dist/Calendar.css';
 import { Card, CardBody } from 'react-simple-card';
 import './Dashboard.css'
 import { Container, Row, Col } from 'react-grid-system';
-
+import { useHistory } from "react-router-dom";
 import { useEffect } from 'react';
 
 
@@ -13,7 +13,7 @@ import { useEffect } from 'react';
 
 const Dashboard = () => {
     
-
+    const history = useHistory()
     const dateWriter = date =>{
         const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
@@ -31,7 +31,7 @@ const Dashboard = () => {
     }
 
     const handleBooking=(props)=>{
-        setType(props)
+        setType(props.t)
     }
 
     //for BOOKING
@@ -41,7 +41,7 @@ const Dashboard = () => {
         name: '',
         phone:'',
         time: '7',
-        status: 'pending'
+        status: 'pending',
     })
 
 
@@ -59,93 +59,77 @@ const Dashboard = () => {
         
     },[type,newDate])
 
-
-    const handleSubmit=()=>{
-       
+const [id, setId] = useState(null)
+    const handleSubmit=(e)=>{
+       e.preventDefault()
         //post
 fetch('https://dry-anchorage-14580.herokuapp.com/addappointment', {
     method:'POST',
-    body:JSON.stringify(appoinmentData),
+    
     headers: {
        "Content-type": "application/json; charset=UTF-8"
-    }
+    },
+    body:JSON.stringify(appoinmentData)
 })
-.then(res =>{
-    res.json()
-    console.log(res)
-} )
+.then(res =>res.json())
 .then(data => {
-    console.log('dataaaaaaaaaa',data);
-    //clean
-    //show success message
+    
+    setId(data._id)
    
 })
-    }
 
-    const addItems=()=>{
-        const aa = [ appoinmentData]
-        //post
-        fetch('https://dry-anchorage-14580.herokuapp.com/addappointment', {
-            method:'POST',
-            body:JSON.stringify(aa),
-            headers: {
-               "Content-type": "application/json; charset=UTF-8"
-            }
-        })
-        .then(res => res.json())
-        .then(data => {
-            console.log('daaaaaaaaata',data);
-            //clean
-            //show success message
-        })
-            }
+    }
+    const treatments = ['Dermatologists' ,'Ophthalmologists','Cardiologists','Endocrinologists','Medicine','Obstetrician']
+
+
+
+    
 
 
     return (
         <div className='patientDashboard'>
-            <div className="calender">
-                <Calendar onChange={onDateChange}  onSelect={(e)=>{
-  console.log(e);
-}} ></Calendar>
-                {String(newDate)}
-                <p></p>
+            { !type &&
+            <div className='appoinment-booking'>
+                <div className="calender">
+                    <Calendar  onChange={onDateChange}  />
+                    
+                </div>
+    <p>Appoinments for {String(newDate)}</p>
+                <div className="appoinments">
+                    <br/>
+                    <Container style={{backgroundColor:"none",marginLeft:'20%',marginRight:'auto'}}>
+                        <Row debug>
+                            
+                                {
+                                    treatments.map(t=>(
+
+                                        
+                                <Card >
+                                    <CardBody className = "card-body">
+                                        <h3>{t}</h3>
+                                        
+                                        <p><small> Spaces available</small></p>
+                                        <button onClick={()=>handleBooking({t})}>Book Appoinment</button>
+                                    </CardBody>
+                                </Card>
+                                
+                                    ))
+                            }
+                            
+                        </Row>
+                    </Container>
+                </div>
             </div>
-            <div className="appoinments">
-                <Container>
-                     <Row debug>
-                        
-                        
-                        <Col md={4} debug>
-                            <Card className = "card">
-                                <CardBody className = "card-body">
-                                    <h3>Teeth Orthodontics</h3>
-                                    <p>8.00 AM - 9.00 AM</p>
-                                    <p><small>10 spaces available</small></p>
-                                    <button onClick={()=>handleBooking('teeth')}>Book Appoinment</button>
-                                </CardBody>
-                            </Card>
-                        </Col>
-                        
-                       
-                        
-                    </Row>
-                </Container>
-                
-                
-            </div>
+}
             <div className="booking">
                  {
                   type &&   
                   <div>
-                        booking
-                        <br/>
                         
-                        {String(newDate)}
-                        <br/>
                         
 
                         <form onSubmit={handleSubmit}>
-                            <h3>{type}</h3>
+                            <h3>Appointment for:  {type}</h3>
                             <input type="text" name='date' defaultValue={newDate}/>
                             <br/>
                             <input type="text" name='name' placeholder='name' onChange={handleChange}/>
@@ -160,11 +144,20 @@ fetch('https://dry-anchorage-14580.herokuapp.com/addappointment', {
                                 
                             </select>
                             <br/>
-                            <input type="submit" value="Submit" />
                             
+                            <button onClick={handleSubmit}>Confirm Appointment</button>
+                            <br/>
+                            {
+                                
+                                id && <div>
+                                    <br/>
+                                     <h3> Thank You for booking Appointment. </h3> 
+                                    
+                                    Your Patient ID: {id}
+                                </div>
+                            }
                         </form>
-                        <br/>
-                        <button onClick={addItems}> add</button>
+                        
                 </div>   
                  }   
             </div>

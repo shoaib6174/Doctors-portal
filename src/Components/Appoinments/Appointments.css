@@ -1,0 +1,16 @@
+.appoinments-list{
+    display: flex;
+    margin-top: 10%;
+}
+.appointments-calender{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+table {
+    border-collapse: collapse;
+  }
+  
+  table, th, td {
+    
+    
+  }
