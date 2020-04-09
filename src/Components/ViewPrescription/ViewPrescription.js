@@ -25,20 +25,40 @@ const ViewPrescription = () => {
     return (
         <div>
             <h3>Prescription</h3>
+        <div style={{marginLeft:"40%"}}>
+            
             <br/>
-            {info && <div>
-                    Patient's Name: {info.name}
-                    <br/>
-                    Age : {info.age}
-                    <br/>
-                    Weight: {info.weight}
-                    <br/>
-                    Symptoms: {info.symptoms}
-                    <br/>
-                    Diagnosis: {info.diagnosis}
-                    <br/>
-                    Prescription: {info.prescription}
-                </div> }
+            {info && 
+            <table>
+                <body>
+                    <tr>
+                        <td>Patient's Name: </td>
+                        <td>{info.name}</td>
+                    </tr>
+                    <tr>
+                        <td>Age : </td>
+                        <td>{info.age}</td>
+                    </tr>
+                    <tr>
+                        <td>Weight: </td>
+                        <td>{info.weight}</td>
+                    </tr>
+                    <tr style={{height:'100px'}}>
+                        <td>Symptoms: </td>
+                        <td>{info.symptoms}</td>
+                    </tr >
+                    <tr style={{height:'100px'}}>
+                        <td>Diagnosis: </td>
+                        <td>{info.diagnosis}</td>
+                    </tr>
+                    <tr style={{height:'100px'}}>
+                        <td>Prescription: </td>
+                        <td>{info.prescription}</td>
+                    </tr>
+                </body>
+            </table>
+             }
+        </div>
         </div>
     );
 };

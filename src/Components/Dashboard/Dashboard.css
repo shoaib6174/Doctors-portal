@@ -11,10 +11,11 @@
 
 .card{
     width: 300px;
-    height: 120px;
+    height: 135px;
     line-height: 15px;
     padding: none;
     margin: none;
+    
 }
 .card-body{
     padding: none;
@@ -22,8 +23,32 @@
 }
 .card__body{
     padding: 0px;
+    border-radius: 10px;
 }
 .appoinments{
     display: flex;
     width: 100%;
+}
+input{
+    line-height: 25px;
+    padding: 5px;
+    font-weight: 400;
+    font-size: 20px;
+    margin: 5px;
+}
+select{
+    line-height: 25px;
+    padding: 5px;
+    font-weight: 400;
+    font-size: 20px;
+    margin: 5px;
+}
+td,th{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+tr:hover {
+    color: green;
+    font-size: 25px;
+    
 }

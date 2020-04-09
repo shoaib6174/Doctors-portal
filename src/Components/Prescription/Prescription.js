@@ -19,10 +19,14 @@ const Prescription = () => {
 
     return (
         <div>
+            <h2>Get Prescription</h2>
             <form onSubmit={handleSubmit}>
-                <input type="text" name="id"  placeholder="Prescription ID" onChange={handleChange}  />
+                <input type="text" name="id"  placeholder="Patient ID" onChange={handleChange}  />
                 <br/>
                 <input type="submit" value="View Prescription"/>
+               <p>
+                    Use this ID to see demo : 5e8f5eb5f55516001812268f
+                </p> 
             </form>
         </div>
     );

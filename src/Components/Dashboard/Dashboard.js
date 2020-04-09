@@ -97,13 +97,15 @@ fetch('https://dry-anchorage-14580.herokuapp.com/addappointment', {
     <p>Appoinments for {String(newDate)}</p>
                 <div className="appoinments">
                     <br/>
-                    <Container style={{backgroundColor:"none",marginLeft:'20%',marginRight:'auto'}}>
+                    <Container style={{backgroundColor:"none",marginLeft:'5%',marginRight:'auto'}}>
                         <Row debug>
                             
                                 {
                                     treatments.map(t=>(
 
-                                        
+                                <Col md={4}>
+
+                                    
                                 <Card >
                                     <CardBody className = "card-body">
                                         <h3>{t}</h3>
@@ -113,7 +115,7 @@ fetch('https://dry-anchorage-14580.herokuapp.com/addappointment', {
                                     </CardBody>
                                 </Card>
                                 
-                                    ))
+                                </Col>     ))
                             }
                             
                         </Row>
@@ -137,10 +139,10 @@ fetch('https://dry-anchorage-14580.herokuapp.com/addappointment', {
                             <input type="text" name='phone' placeholder='Phone No' onChange={handleChange} />
                             <br/>
                             <select  name='time' placeholder='time' onChange={handleChange}>
-                                <option value="7">7:00AM-10:00AM</option>
-                                <option value="11">10:00AM-1:00PM</option>
-                                <option value="15">3:00PM-6:00PM</option>
-                                <option value="19">7:00PM-10:00PM</option>
+                                <option value="7:00AM-10:00AM">7:00AM-10:00AM</option>
+                                <option value="10:00AM-1:00PM">10:00AM-1:00PM</option>
+                                <option value="3:00PM-6:00PM">3:00PM-6:00PM</option>
+                                <option value="7:00PM-10:00PM">7:00PM-10:00PM</option>
                                 
                             </select>
                             <br/>

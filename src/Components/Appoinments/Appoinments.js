@@ -46,8 +46,9 @@ const Appoinments = () => {
                         }  
                     })
                 }
-            
+             
                 <body>
+                <h5>Appointments for {String(newDate)}</h5>   
                 <table className='css-serial'>
                     <tbody>
                         <tr>

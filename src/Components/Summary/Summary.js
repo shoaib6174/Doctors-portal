@@ -69,13 +69,14 @@ const Summary = () => {
             const appo = {_id, status}
             update(appo)
             const btn = document.getElementById('status'+_id).innerHTML =status;
-         
+            setPending(pending-1)
         }
         else{
             status= 'pending'
             const appo = {_id, status}
             update(appo)
             const btn = document.getElementById('status'+_id).innerText =status;
+            setPending(pending+1)
           
         }
     
@@ -104,7 +105,8 @@ const Summary = () => {
 
 
     return (
-        <div>
+        <div style={{marginLeft:'10%'}}>
+           <h2> Patients Summary  </h2>
             <div className="count">
                 <Card style={{width:'400px',height:'50px'}}> 
                     <CardBody style={{paddingTop: '20px'}}>
@@ -122,7 +124,8 @@ const Summary = () => {
                     </CardBody>
                 </Card>
             </div>
-
+<div>
+    <h4>Patients List</h4>
             <table className='css-serial'>
                 
                     <tr>
@@ -162,6 +165,7 @@ const Summary = () => {
                 }
                 
             </table>
+            </div>
         </div>
     );
 };

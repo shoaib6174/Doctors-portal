@@ -15,8 +15,8 @@ const Homepage = () => {
 
             
                 <div className='for-patient'>
-                    <Card>
-                        <CardBody>
+                    <Card style={{width:'350px', height:'200px', backgroundColor:'green', border:'none'}} >
+                        <CardBody style={{ width:'350px', height:'200px',backgroundColor:'lightgreen',paddingTop:'.05%',margin:'5px'}}>
                             <h6>For Patient</h6>
                             <button onClick={()=>history.push('/patients/setappointments')}>Book an Appointment</button>
                             <button onClick={()=>history.push('/patients/viewprescription')}>View Prescription</button>
@@ -24,11 +24,11 @@ const Homepage = () => {
                     </Card>
                 </div>
                 <div className='for-doctor'>
-                    <Card>
-                        <CardBody>
+                <Card style={{width:'350px', height:'200px', backgroundColor:'green', border:'none'}} >
+                    <CardBody style={{ width:'350px', height:'200px',backgroundColor:'lightgreen',paddingTop:'.05%',margin:'5px'}}>
                         
                             <h6>For Doctors</h6>
-                            <button onClick={()=>history.push('/doctor/appointments')}>View Appointment</button>
+                            <button onClick={()=>history.push('/doctor/appointments')}>View Appointments</button>
                             <button onClick={()=>history.push('/doctor/summary')}>View Patients' Summary</button>
                         </CardBody>
                     </Card>

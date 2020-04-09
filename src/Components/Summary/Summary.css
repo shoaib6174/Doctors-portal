@@ -16,4 +16,17 @@
      margin-top: 10px;
      
   }
-  
+  tr:nth-child(2n) {
+    background: lightgrey;
+  }
+  tr:nth-child(2n+1) {
+    background: lightblue;
+  }
+  button{
+      border: none;
+      border-radius: 5px;
+      padding: 5px;
+      margin: 3px;
+      font-size: 20px;
+      background-color: lightcoral;
+  }
